@@ -18,7 +18,7 @@ const startServer = async () => {
     httpServer.listen({ port: API_PORT }, resolve),
   );
 
-  logger.info(`Apollo Server ready at http://localhost:${APOLLO_PORT}`);
+  logger.info(`Apollo Server ready to use, port: ${APOLLO_PORT}`);
 };
 
 startServer();
