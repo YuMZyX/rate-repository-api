@@ -1,2 +1,2 @@
 [phases.build]
-cmds = ["npm run build", "npm run seed:run"]
+cmds = ["npm run build"]
