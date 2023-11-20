@@ -1,9 +1,8 @@
 import { gql } from 'apollo-server';
-//import { raw } from 'objection';
+import { raw } from 'objection';
 import * as yup from 'yup';
 
 import Repository from '../../models/Repository';
-import Review from '../../models/Review';
 
 export const typeDefs = gql`
   enum AllRepositoriesOrderBy {
@@ -76,11 +75,12 @@ export const resolvers = {
 
       // Missing reviews should have average of 0 not null
       if (orderColumn === 'ratingAverage') {
-        query = query
-          .select('repositories.*', Review.query().avg('reviews.rating'))
-          .where('reviews.repository_id', 'repositories.id')
-          .groupBy('reviews.repository_id');
-
+        query = query.select([
+          'repositories.*',
+          raw(
+            'coalesce((select avg(rating) as rating_average from reviews where repository_id = repositories.id group by repository_id), 0) as rating_average',
+          ),
+        ]);
         console.log(query);
       }
 
