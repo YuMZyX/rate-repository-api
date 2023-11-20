@@ -78,7 +78,7 @@ export const resolvers = {
           'repositories.*',
           // Missing reviews should have average of 0 not null
           raw(
-            'coalesce((select avg(rating) as rating_average from reviews where repository_id = repositories.id group by repository_id), 0) as rating_average',
+            'coalesce((select avg(rating) from reviews where repository_id = repositories.id group by repository_id), 0) as rating_average',
           ),
         ]);
       }
