@@ -7,7 +7,6 @@ import knexfile from '../knexfile';
 dotenv.config({ path: path.resolve(__dirname, '..', '.env') });
 
 export const API_PORT = process.env.API_PORT || 5000;
-
 export const APOLLO_PORT = process.env.PORT || 4000;
 
 export const JWT_SECRET = process.env.JWT_SECRET;
