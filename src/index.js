@@ -9,7 +9,8 @@ const startServer = async () => {
 
   const apolloServer = createApolloServer();
 
-  const { url } = await apolloServer.listen({ port: APOLLO_PORT });
+  const apollo_port = Number.parseInt(APOLLO_PORT);
+  const { url } = await apolloServer.listen({ port: apollo_port });
 
   httpServer.on('request', app.callback());
 
