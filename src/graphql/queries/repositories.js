@@ -83,7 +83,6 @@ export const resolvers = {
             ),
           ])
           .groupBy('repositories.id');
-        console.log(query);
       }
 
       return query.cursorPaginate({
@@ -104,12 +103,12 @@ export default {
 };
 
 /*
-if (orderColumn === 'ratingAverage') {
         query = query
-          .select(['repositories.*',
-          raw(
-            'coalesce((select avg(rating) as rating_average from reviews where repository_id = repositories.id group by repository_id), 0) as rating_average',
-          ),
-        ]);
-      }
-*/
+          .select([
+            'repositories.*',
+            raw(
+              'coalesce((select avg(rating) as rating_average from reviews where repository_id = repositories.id group by repository_id), 0) as rating_average',
+            ),
+          ])
+          .groupBy('repositories.id');
+          */
