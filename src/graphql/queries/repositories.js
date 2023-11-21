@@ -73,11 +73,11 @@ export const resolvers = {
         });
       }
 
-      // Missing reviews should have average of 0 not null
       if (orderColumn === 'ratingAverage') {
         query = query
           .select([
             'repositories.*',
+            // Missing reviews should have average of 0 not null
             raw(
               'coalesce((select avg(rating) as rating_average from reviews where repository_id = repositories.id group by repository_id), 0) as rating_average',
             ),
@@ -101,14 +101,3 @@ export default {
   typeDefs,
   resolvers,
 };
-
-/*
-        query = query
-          .select([
-            'repositories.*',
-            raw(
-              'coalesce((select avg(rating) as rating_average from reviews where repository_id = repositories.id group by repository_id), 0) as rating_average',
-            ),
-          ])
-          .groupBy('repositories.id');
-          */
