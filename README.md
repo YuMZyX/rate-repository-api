@@ -102,9 +102,3 @@ Apollo Sandbox offers documentation on how to use the API. Start the server by r
 ## 🐛 Found a bug?
 
 Submit an issue with the bug description and a sway to reproduce the bug. If you have already come up with a solution, we will gladly accept a pull request.
-
-## ❓ FAQ
-
-- **How to reset the database?** If you are absolutely sure that you want to remove _all_ the existing data, just remove the `database.sqlite` file in the `rate-repository-api` directory and run `npm run build`. You can run `npm run seed:run` to initialize the new database with seed data.
-
-- **Is this production ready?** Almost. The current version of the API utilizes the SQLite database, which is not quite suitable for production. Luckily, all database queries are performed with [Objection](https://vincit.github.io/objection.js/) ORM, and changing the underlying database driver is just a matter of [configuration](http://knexjs.org/#Installation-client).
