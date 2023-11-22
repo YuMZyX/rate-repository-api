@@ -101,4 +101,4 @@ Apollo Sandbox offers documentation on how to use the API. Start the server by r
 
 ## 🐛 Found a bug?
 
-Submit an issue with the bug description and a sway to reproduce the bug. If you have already come up with a solution, we will gladly accept a pull request.
+Submit an issue with the bug description and a sway to reproduce the bug.
