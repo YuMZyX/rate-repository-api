@@ -6,8 +6,6 @@ const PGUSER = process.env.PGUSER;
 const PGDATABASE = process.env.PGDATABASE;
 const PGPASSWORD = process.env.PGPASSWORD;
 
-//const FILENAME = process.env.DATABASE_FILENAME || 'database.sqlite';
-
 module.exports = {
   client: 'pg',
   connection: {
@@ -19,5 +17,4 @@ module.exports = {
     password: PGPASSWORD,
     ssl: { rejectUnauthorized: false },
   },
-  //useNullAsDefault: true,
 };
