@@ -21,13 +21,22 @@ v16.19.0
 
 2. Rate Repository API uses the GitHub API, which has a quite small rate limit (60 requests per hour) for unauthorized requests. Therefore, we need to register it as an OAuth application to obtain client credentials. Register your OAuth application [here](https://github.com/settings/applications/new) by setting "Application name" as "Rate Repository API", "Homepage URL" as https://github.com/Kaltsoon/rate-repository-api and "Authorization callback URL" as http://localhost:5000. Now you should see your application [here](https://github.com/settings/developers) and by going to the application's page, see the "Client ID" and "Client Secret" values.
 
-3. Create a file `.env` in the `rate-repository-api` directory and copy the contents of the `.env.template` file there. In the `.env` file, replace `GITHUB_CLIENT_ID`, and `GITHUB_CLIENT_SECRET` variable values with your newly registered OAuth application's credentials. If you want, you can also use a different secret for the `JWT_SECRET` variable, which is used to sign access tokens.
+3. Create a file `.env` in the `rate-repository-api` directory and add following values:
+   - GITHUB_CLIENT_ID        (See previous part to get the value)
+   - GITHUB_CLIENT_SECRET    (See previous part to get the value)
+   - JWT_SECRET              (Used in JWT authentication, you can set any string as your own secret value)
+   - DATABASE_URL            (Use a PostgeSQL database either locally or through a service such as Heroku or Railway and add the corresponding values)
+   - PGHOST
+   - PGPORT
+   - PGUSER
+   - PGDATABASE
+   - PGPASSWORD
 
-4. Run `npm run build`. This will setup the SQLite database and run the migrations.
+5. Run `npm run build`. This will setup the PostgreSQL database and run the migrations.
 
-5. To populate the database with some seed data, run `npm run seed:run`. **Note:** running this command will remove all existing data.
+6. To populate the database with some seed data, run `npm run seed:run`. **Note:** running this command will remove all existing data.
 
-6. All done! Just run `npm start` to start the server. After the server has started you should be able to access the Apollo Sandbox at http://localhost:4000.
+7. All done! Just run `npm start` to start the server. After the server has started you should be able to access the Apollo Sandbox at http://localhost:4000.
 
 **NOTE** The port 5000 might be reserved in new macOS versions. If you see this error
 
